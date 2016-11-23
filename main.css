@@ -1,0 +1,100 @@
+@keyframes rainbow {
+  15% {background-color: red;}
+  30% {background-color: orange;}
+  45% {background-color: yellow;}
+  60% {background-color: green;}
+  75% {background-color: blue;}
+  90% {background-color: indigo;}
+  100% {background-color: violet;}
+}
+
+@keyframes ushipRainbow {
+  15% {background-color: #1C2431;}
+  30% {background-color: #00B437;}
+  45% {background-color: #02AAF3;}
+  60% {background-color: #0083BB;}
+  75% {background-color: #F65F5F;}
+  90% {background-color: #BBB8B8;}
+  100% {background-color: #262626;}
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(-25deg);
+  }
+  to {
+    transform: rotate(335deg);
+  }
+}
+
+@keyframes pulseArrow {
+  from {
+    transform: rotate(45deg) scale(0,0);
+  }
+  to {
+    transform: rotate(45deg) scale(1,1);
+  }
+}
+
+@keyframes pulsePath {
+  from {
+    transform: rotate(115deg) scale(0.25,0.25);
+  }
+  to {
+    transform: rotate(115deg) scale(1,1);
+  }
+}
+
+html {
+  text-align: center;
+  padding-top: 5%;
+}
+
+div {
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  background-color: #0083BB;
+  border-radius: 10px;
+  transform: rotate(-25deg);
+}
+
+.weird {
+  animation: spin 5s infinite, ushipRainbow 2s 5s infinite;
+}
+
+div:before, div:after {
+  display: block;
+  content: '';
+  position: absolute;
+}
+
+div:before {
+  margin: 5px 5px auto 165px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid white;
+  transform: rotate(45deg)
+}
+
+.weird:before {
+  animation: pulseArrow 1s 200ms alternate infinite;
+}
+
+div:after {
+  margin-top: 60px;
+  width: 200px;
+  height: 80px;
+  background-color: white;
+  -webkit-clip-path:
+    polygon(
+    0% 15%, 35% 100%, 75% 25%, 95% 100%, 100% 90%, 75% 0%, 35% 75%, 5% 0%
+    );
+  transform: rotate(115deg)
+}
+
+.weird:after {
+  animation: pulsePath 1s 200ms alternate infinite;
+}
